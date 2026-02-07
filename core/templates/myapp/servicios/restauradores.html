@@ -1,22 +1,21 @@
-{% extends "myapp/productos/base_producto.html" %}
+{# =========================  myapp/servicios/restauradores.html ========================= #}
+{% extends "myapp/servicios/base_servicio.html" %}
 {% load static %}
 
-{% block title %}Pisos SPC | Od. Alessandrello{% endblock %}
+{% block title %}Tratamientos Restauradores | Od. Alessandrello{% endblock %}
 
 {% block producto_imagen %}
-  <img src="{% static 'img/pisos-spc.webp' %}" alt="Pisos SPC" class="img-fluid">
+  <img src="{% static 'img/servicios/restauradores.webp' %}" alt="Tratamientos Restauradores" class="img-fluid">
 {% endblock %}
 
-{% block producto_titulo %}Pisos SPC{% endblock %}
+{% block producto_titulo %}Tratamientos Restauradores{% endblock %}
 
 {% block producto_bajada %}
-  <p>Piso resistente al agua y al tránsito. Ideal para hogares y comercios.</p>
-  <p><span class="highlight">Encastre preciso</span> y terminación prolija.</p>
+  <p>Tratamos caries y restauraciones con técnicas modernas y mínimamente invasivas.</p>
+  <p><span class="highlight">Contención y confianza</span> en cada paso.</p>
 {% endblock %}
 
 {% block producto_contenido %}
-
-<!-- SERVICIOS + CARRUSEL -->
 <div class="untree_co-section bg-light" id="features-section">
   <div class="container">
     <div class="row justify-content-between">
@@ -31,8 +30,8 @@
             </svg>
           </div>
           <div class="service-contents">
-            <h3>Alta resistencia</h3>
-            <p>Diseñados para soportar alto tránsito, golpes y uso diario sin perder su estética.</p>
+            <h3>Diagnóstico claro</h3>
+            <p>Te explicamos el plan de tratamiento con lenguaje simple y sin sorpresas.</p>
           </div>
         </a>
 
@@ -45,8 +44,8 @@
             </svg>
           </div>
           <div class="service-contents">
-            <h3>100% resistente al agua</h3>
-            <p>Ideales para cocinas, baños y comercios. No se hinchan ni se deforman.</p>
+            <h3>Mínimamente invasivo</h3>
+            <p>Priorizamos el confort del niño y procedimientos cuidadosos, sin apuro.</p>
           </div>
         </a>
 
@@ -59,8 +58,8 @@
             </svg>
           </div>
           <div class="service-contents">
-            <h3>Instalación rápida</h3>
-            <p>Sistema encastrable que permite renovar pisos sin obras largas ni escombros.</p>
+            <h3>Contención emocional</h3>
+            <p>Adaptación y comunicación para que el niño se sienta seguro durante el tratamiento.</p>
           </div>
         </a>
 
@@ -72,8 +71,8 @@
             </svg>
           </div>
           <div class="service-contents">
-            <h3>Diseño realista</h3>
-            <p>Apariencia madera con terminaciones modernas y fáciles de combinar.</p>
+            <h3>Indicaciones claras</h3>
+            <p>Te llevás recomendaciones para casa y seguimiento para evitar recaídas.</p>
           </div>
         </a>
 
@@ -82,22 +81,10 @@
       <div class="col-lg-7">
         <div class="img-shadow">
           <div class="owl-single no-dots owl-carousel">
-            <div class="item">
-              <span class="number">1/4</span>
-              <img src="{% static 'img/productos/pisos2.webp' %}" alt="Piso SPC instalado" class="img-fluid">
-            </div>
-            <div class="item">
-              <span class="number">2/4</span>
-              <img src="{% static 'img/productos/pisos1.webp' %}" alt="Detalle de piso SPC" class="img-fluid">
-            </div>
-            <div class="item">
-              <span class="number">3/4</span>
-              <img src="{% static 'img/productos/pisos3.webp' %}" alt="Ambiente con piso SPC" class="img-fluid">
-            </div>
-            <div class="item">
-              <span class="number">4/4</span>
-              <img src="{% static 'img/productos/pisos4.webp' %}" alt="Piso SPC en comercio" class="img-fluid">
-            </div>
+            <div class="item"><span class="number">1/4</span><img src="{% static 'img/servicios/restauradores-1.webp' %}" alt="Tratamiento caries" class="img-fluid"></div>
+            <div class="item"><span class="number">2/4</span><img src="{% static 'img/servicios/restauradores-2.webp' %}" alt="Restauración infantil" class="img-fluid"></div>
+            <div class="item"><span class="number">3/4</span><img src="{% static 'img/servicios/restauradores-3.webp' %}" alt="Atención cálida" class="img-fluid"></div>
+            <div class="item"><span class="number">4/4</span><img src="{% static 'img/servicios/restauradores-4.webp' %}" alt="Consultorio odontopediátrico" class="img-fluid"></div>
           </div>
         </div>
       </div>
@@ -105,7 +92,4 @@
     </div>
   </div>
 </div>
-<!-- /SERVICIOS + CARRUSEL -->
-
-
 {% endblock %}
