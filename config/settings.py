@@ -27,11 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "odalessandrello-production.up.railway.app",
-    "od.alessandrello",
-    "odalessandrello",
+    "od.alessandrello.ar",
+    "odalessandrello.ar",
     "localhost",
-    "127.0.0.1",
-]
+    "127.0.0.1"]
 
 
 # Application definition
