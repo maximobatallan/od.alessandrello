@@ -1,22 +1,32 @@
-# myapp/views.py
 from __future__ import annotations
 
-from django.shortcuts import render, redirect
+from django.core.mail import EmailMessage
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_POST
-from django.core.mail import EmailMessage
+
 from .models import Formulario
 
 
-WHATSAPP_NUMBER = "5491xxxxxxxxx"
-DIRECCION_LOCAL = "Besares 2477, 3Â°D"
+WHATSAPP_NUMBER = "5491173722700"
+DIRECCION_LOCAL = "Besares 2477, 3°D"
 
 SERVICIOS = [
-    {"key": "prevencion", "nombre": "PrevenciÃ³n y controles", "url_name": "servicio_prevencion"},
-    {"key": "bebe", "nombre": "Primera consulta del bebÃ©", "url_name": "servicio_bebe"},
-    {"key": "restauradores", "nombre": "Tratamientos restauradores", "url_name": "servicio_restauradores"},
-    {"key": "sin_miedo", "nombre": "OdontologÃ­a sin miedo", "url_name": "servicio_sin_miedo"},
-    {"key": "educacion", "nombre": "EducaciÃ³n y hÃ¡bitos", "url_name": "servicio_educacion"},
+    {
+        "key": "odontopediatria",
+        "nombre": "Odontopediatría",
+        "url_name": "servicio_odontopediatria",
+    },
+    {
+        "key": "odontologia_general",
+        "nombre": "Odontología general",
+        "url_name": "servicio_odontologia_general",
+    },
+    {
+        "key": "implantologia",
+        "nombre": "Implantología y rehabilitación oral",
+        "url_name": "servicio_implantologia",
+    },
 ]
 
 
@@ -57,12 +67,10 @@ def _sanitize_choice(value: str, allowed: set[str], default: str) -> str:
 
 def send_user_data_email(user_data: str) -> None:
     subject = "Nuevo formulario web"
-    body = f"Se registrÃ³ un nuevo formulario con los siguientes datos:\n\n{user_data}"
+    body = f"Se registró un nuevo formulario con los siguientes datos:\n\n{user_data}"
 
     from_email = "notificaciondepaginaweb@gmail.com"
-
     to = ["notificaciondepaginaweb@gmail.com"]
-
     bcc = [
         "maximobatallan@gmail.com",
         "od.alessandrello@gmail.com",
@@ -75,7 +83,6 @@ def send_user_data_email(user_data: str) -> None:
         to=to,
         bcc=bcc,
     )
-
     email.send(fail_silently=False)
 
 
@@ -86,17 +93,16 @@ def home(request):
     ctx = _base_context(
         is_home=True,
         formulario_enviado=formulario_enviado,
-        page_title="Aura Odontologia | OdontologÃ­a integral para todas las edades",
+        page_title="Aura Odontologia | Odontología integral para todas las edades",
         page_description=(
-            "OdontologÃ­a integral para todas las edades. Especialistas en odontopediatrÃ­a, "
-            "implantologÃ­a y rehabilitaciÃ³n oral. AtenciÃ³n profesional, cercana y "
-            "personalizada con turnos por WhatsApp."
+            "Odontología integral para todas las edades. Especialistas en odontopediatría, "
+            "odontología general e implantología y rehabilitación oral. Atención profesional, "
+            "cercana y personalizada con turnos por WhatsApp."
         ),
-        whatsapp_text="Hola, quiero sacar un turno. Â¿Me pasan disponibilidad?",
+        whatsapp_text="Hola, quiero sacar un turno. ¿Me pasan disponibilidad?",
         producto="general",
         origen=origen,
     )
-
     return render(request, "myapp/pages/home.html", ctx)
 
 
@@ -161,8 +167,8 @@ def save_formulario(request):
 def politicas_privacidad(request):
     ctx = _base_context(
         is_home=False,
-        page_title="PolÃ­ticas de Privacidad | Aura Odontologia",
-        page_description="PolÃ­ticas de privacidad de Aura Odontologia.",
+        page_title="Políticas de Privacidad | Aura Odontologia",
+        page_description="Políticas de privacidad de Aura Odontologia.",
     )
     return render(request, "myapp/politicas_privacidad.html", ctx)
 
@@ -172,11 +178,14 @@ def odontopediatria(request):
     ctx = _base_context(
         is_home=False,
         active_producto="odontopediatria",
-        page_title="OdontopediatrÃ­a | Aura Odontologia",
-        page_description="Especialistas en odontopediatrÃ­a. AtenciÃ³n odontolÃ³gica para bebÃ©s, niÃ±os y adolescentes con enfoque preventivo y cuidado integral.",
+        page_title="Odontopediatría | Aura Odontologia",
+        page_description=(
+            "Atención especializada para bebés, niños y adolescentes en un entorno cálido y de "
+            "confianza, con foco en hábitos saludables y controles periódicos."
+        ),
         producto="odontopediatria",
         origen=origen,
-        whatsapp_text="Hola, quiero sacar un turno para odontopediatrÃ­a.",
+        whatsapp_text="Hola, quiero sacar un turno para odontopediatría.",
     )
     return render(request, "myapp/servicios/odontopediatria.html", ctx)
 
@@ -186,11 +195,14 @@ def odontologia_general(request):
     ctx = _base_context(
         is_home=False,
         active_producto="odontologia_general",
-        page_title="OdontologÃ­a General | Aura Odontologia",
-        page_description="OdontologÃ­a general para todas las edades. DiagnÃ³stico, limpieza, tratamientos restauradores y cuidado integral de la salud bucal.",
+        page_title="Odontología general | Aura Odontologia",
+        page_description=(
+            "Odontología general para todas las edades con controles, limpiezas, restauraciones "
+            "estéticas, urgencias y tratamientos integrales para cada caso."
+        ),
         producto="odontologia_general",
         origen=origen,
-        whatsapp_text="Hola, quiero consultar por odontologÃ­a general.",
+        whatsapp_text="Hola, quiero consultar por odontología general.",
     )
     return render(request, "myapp/servicios/odontologia_general.html", ctx)
 
@@ -200,10 +212,13 @@ def implantologia(request):
     ctx = _base_context(
         is_home=False,
         active_producto="implantologia",
-        page_title="ImplantologÃ­a Dental | Aura Odontologia",
-        page_description="Implantes dentales para recuperar funciÃ³n y estÃ©tica. Tratamientos modernos con planificaciÃ³n digital y materiales de alta calidad.",
+        page_title="Implantología y rehabilitación oral | Aura Odontologia",
+        page_description=(
+            "Implantología y rehabilitación oral para recuperar función, estética y comodidad "
+            "con tratamientos personalizados."
+        ),
         producto="implantologia",
         origen=origen,
-        whatsapp_text="Hola, quiero consultar por implantes dentales.",
+        whatsapp_text="Hola, quiero consultar por implantología y rehabilitación oral.",
     )
     return render(request, "myapp/servicios/implantologia.html", ctx)

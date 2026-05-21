@@ -42,6 +42,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://od.alessandrello.ar",
     "https://odalessandrello.ar",
     "https://auraodontologia.ar",
+    "https://aura-odontologia-production-a8eb.up.railway.app",
+  
 ]
 
 
