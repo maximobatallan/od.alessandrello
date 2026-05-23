@@ -4,19 +4,16 @@
   <div class="container">
     <div class="site-navigation d-flex align-items-center justify-content-between">
 
-      <!-- LOGO -->
       <a href="{% url 'myapp:home' %}" class="logo m-0 d-flex align-items-center">
         <img src="{% static 'img/logo.webp' %}"
-             alt="Aura Odontologia odontologia integral para todas las edades"
+             alt="Aura Odontologia odontología integral para todas las edades"
              class="logo-pc mr-2">
         <span class="logo-text">
           Aura Odontologia<span class="text-primary">.</span>
         </span>
       </a>
 
-      <!-- MENU -->
       <ul class="js-clone-nav d-none d-lg-inline-block site-menu">
-
         <li class="{% if is_home %}active{% endif %}">
           <a href="{% if is_home %}#home-section{% else %}{% url 'myapp:home' %}#home-section{% endif %}" class="nav-link">
             Inicio
@@ -31,28 +28,20 @@
           <ul class="dropdown">
             <li>
               <a href="{% url 'myapp:servicio_odontopediatria' %}">
-                Odontopediatria
+                Odontopediatría
               </a>
             </li>
-
             <li>
               <a href="{% url 'myapp:servicio_odontologia_general' %}">
-                Odontologia general
+                Odontología general
               </a>
             </li>
-
             <li>
               <a href="{% url 'myapp:servicio_implantologia' %}">
-                Implantologia
+                Implantología y rehabilitación oral
               </a>
             </li>
           </ul>
-        </li>
-
-        <li>
-          <a href="{% if is_home %}#testimonials-section{% else %}{% url 'myapp:home' %}#testimonials-section{% endif %}" class="nav-link">
-            Resenas
-          </a>
         </li>
 
         <li>
@@ -66,7 +55,6 @@
             Contacto
           </a>
         </li>
-
       </ul>
 
       <a href="#"

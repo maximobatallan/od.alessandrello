@@ -22,21 +22,17 @@
                 {% block producto_bajada %}{% endblock %}
               </div>
 
-             
-
               <p data-aos="fade-up" data-aos-delay="200" style="padding-top: 25px;">
+                <a href="https://wa.me/5491173722700?text={{ whatsapp_text|urlencode }}"
+                   target="_blank"
+                   class="btn btn-primary smoothscroll">
+                  <i class="fab fa-whatsapp"></i> Solicitar Turno
+                </a>
 
-  <a href="https://wa.me/5491173722700?text={{ whatsapp_text|urlencode }}"
-     target="_blank"
-     class="btn btn-primary smoothscroll">
-    <i class="fab fa-whatsapp"></i> Solicitar Turno
-  </a>
-
-  <a href="#features-section" class="btn btn-outline-primary">
-    Servicios
-  </a>
-
-</p>
+                <a href="#features-section" class="btn btn-outline-primary">
+                  Servicios
+                </a>
+              </p>
 
             </div>
 
@@ -47,10 +43,6 @@
   </div>
 
   {% block producto_contenido %}{% endblock %}
-    {% include "myapp/partials/contact_section.html" %}
-{% include "myapp/partials/testimonials_google.html" %}
-{% include "myapp/partials/about_section.html" %}
-
-
-
+  {% include "myapp/partials/about_section.html" %}
+  {% include "myapp/partials/contact_section.html" %}
 {% endblock %}
