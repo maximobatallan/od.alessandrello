@@ -660,6 +660,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     .untree_co-hero .heading {
       font-size: 50px; } }
 
+@media (max-width: 575.98px) {
+  .untree_co-hero .heading.service-hero-title {
+    font-size: clamp(2.6rem, 11vw, 3.4rem);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
 .untree_co-hero .dots {
   position: absolute;
   width: 100%;
