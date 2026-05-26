@@ -54,6 +54,25 @@ $(function(){
       
     });
 
+		$('body').on('click', '.site-mobile-menu .has-children > a', function(e) {
+      var $link = $(this);
+      var $submenu = $link.siblings('.collapse');
+
+      if (!$submenu.length) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      $submenu.collapse('toggle');
+    });
+
+		$('body').on('shown.bs.collapse hidden.bs.collapse', '.site-mobile-menu .has-children .collapse', function(e) {
+      var $submenu = $(this);
+      var isOpen = e.type === 'shown';
+      $submenu.siblings('.arrow-collapse').toggleClass('active', isOpen);
+    });
+
 		$(window).resize(function() {
 			var $this = $(this),
 				w = $this.width();
@@ -256,16 +275,38 @@ $(function(){
 	var OnePageNavigation = function() {
     var navToggler = $('.site-menu-toggle');
    	$("body").on("click", ".site-nav .site-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
-      e.preventDefault();
+      if ($(this).closest('.site-mobile-menu').length && $(this).siblings('.collapse').length) {
+        return;
+      }
+
       var hash = this.hash;
-      
-        $('html, body').animate({
+      var isSamePageAnchor = hash && this.pathname === window.location.pathname;
 
-          scrollTop: $(hash).offset().top
-        }, 400, 'easeInOutExpo', function(){
-          window.location.hash = hash;
-        });
+      if (!isSamePageAnchor) {
+        if ( $('body').hasClass('offcanvas-menu') ) {
+          $('body').removeClass('offcanvas-menu');
+          $('body').find('.js-menu-toggle').removeClass('active');
+        }
+        return;
+      }
 
+      var $target = $(hash);
+      if (!$target.length) {
+        return;
+      }
+
+      e.preventDefault();
+
+      $('html, body').animate({
+        scrollTop: $target.offset().top
+      }, 400, 'easeInOutExpo', function(){
+        window.location.hash = hash;
+      });
+
+      if ( $('body').hasClass('offcanvas-menu') ) {
+        $('body').removeClass('offcanvas-menu');
+        $('body').find('.js-menu-toggle').removeClass('active');
+      }
     });
 
     // $("#menu li a[href^='#']").on('click', function(e){
