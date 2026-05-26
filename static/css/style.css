@@ -4,7 +4,7 @@ body {
   background: #ffffff;
   overflow-x: hidden;
   font-size: 16px;
-  color: #939393; }
+  color: #566134; }
   body:before {
     content: "";
     position: fixed;
@@ -644,7 +644,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   outline: none; }
 
 .untree_co-hero, .untree_co-hero > .container > .row {
-  padding: 4rem 0; }
+  padding: 3rem 0; }
 
 @media (max-width: 991.98px) {
   .untree_co-hero {
