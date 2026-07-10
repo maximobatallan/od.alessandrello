@@ -8,8 +8,8 @@ from django.views.decorators.http import require_POST
 from .models import Formulario
 
 
-WHATSAPP_NUMBER = "5491173722700"
-DIRECCION_LOCAL = "Besares 2477, 3°D"
+WHATSAPP_NUMBER = "5491170621055"
+DIRECCION_LOCAL = "Besares 2477, 3°D, Nuñez, Capital Federal"
 
 SERVICIOS = [
     {
